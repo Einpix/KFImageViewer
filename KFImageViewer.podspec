@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
     DESC
     
   s.homepage         = 'https://github.com/faisalazeez/KFImageViewer'
-  s.swift_version    = '4.0'
+  s.swift_version    = '5.0'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'faisalazeez' => 'faisalazeez7@gmail.com' }
@@ -34,10 +34,15 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   
   s.subspec 'Core' do |core|
-      core.source_files = 'Core/**/*'
-      core.resources = 'Core/Resources/*.png'
+      core.source_files = 'Core/**/*.swift'
+      core.resource = 'Core/Resources/*.png'
   end
   
+  s.resource_bundles = {
+      # See Bundle.swift for why this is named like this.
+      'KFImageViewer' => ['Core/Resources/*']
+    }
+
   s.subspec 'Kingfisher' do |subspec|
       subspec.dependency 'KFImageViewer/Core'
       subspec.dependency 'Kingfisher', '> 5.2'

@@ -541,6 +541,7 @@ open class ImageCache {
         guard let sharedApplication = Kingfisher<UIApplication>.shared else { return }
 
         func endBackgroundTask(_ task: inout UIBackgroundTaskIdentifier) {
+
             sharedApplication.endBackgroundTask(convertToUIBackgroundTaskIdentifier(task.rawValue))
             task = UIBackgroundTaskIdentifier.invalid
         }
